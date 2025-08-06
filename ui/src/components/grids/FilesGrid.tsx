@@ -22,7 +22,7 @@ import { Tab } from "../../models/tab";
 import { IUserFile } from "../../models/userFile";
 import { stores } from "../../stores/stores";
 import { downloadUserFile } from "../../utils/downloaders";
-import { getHumanReadableRelativeDate } from "../../utils/helpers";
+import { getHumanReadableRelativeDate, getHumanReadableRelativeDateIntl } from "../../utils/helpers";
 import GridToolbarButtons from "../buttons/GridToolbarButtons";
 import SendButton from "../buttons/SendButton";
 import UploadButton from "../buttons/UploadButton";
@@ -30,11 +30,13 @@ import ApprovalRequestSubmitDialog from "../dialogs/ApprovalRequestSubmitDialog"
 import UserFileDeleteDialog from "../dialogs/UserFileDeleteDialog";
 import UserFileActionsMenu from "../menus/UserFileActionsMenu";
 import NoRowsOverlay from "../overlays/NoRowsOverlay";
+import { useTranslation } from "react-i18next";
 
 // Data grid with user files.
 const FilesGrid = () => {
   const theme = useTheme();
-
+  const { t } = useTranslation();
+  
   useEffect(() => {
     stores.commonStore.setCurrentTab(Tab.Files);
     stores.userFileStore.clearUserFiles();
@@ -54,7 +56,7 @@ const FilesGrid = () => {
   const columns: GridColDef[] = [
     {
       field: "name",
-      headerName: "File name",
+      headerName: t("FilesGrid.FileNameLabel"),
       flex: 10,
       renderCell: (params) => {
         return (
@@ -69,25 +71,25 @@ const FilesGrid = () => {
     },
     {
       field: "createdDate",
-      headerName: "Uploaded",
+      headerName: t("FilesGrid.UploadedLabel"),
       flex: 3,
-      valueFormatter: (value) => getHumanReadableRelativeDate(value),
+      valueFormatter: (value) => getHumanReadableRelativeDateIntl(value),
     },
     {
       field: "type",
-      headerName: "Type",
+      headerName: t("FilesGrid.TypeLabel"),
       flex: 3,
       minWidth: 70,
     },
     {
       field: "size",
-      headerName: "Size",
+      headerName: t("FilesGrid.SizeLabel"),
       flex: 3,
       valueFormatter: (value) => prettyBytes(value),
     },
     {
       field: "action",
-      headerName: "Action",
+      headerName: t("FilesGrid.ActionLabel"),
       headerAlign: "right",
       align: "right",
       flex: 1,
@@ -100,6 +102,7 @@ const FilesGrid = () => {
   return (
     <Box sx={{ width: "100%", overflow: "hidden" }}>
       <DataGrid
+	    localeText={{ toolbarColumns: t("GridToolBar.toolbarColumns"), toolbarFilters: t("GridToolBar.toolbarFilters"), toolbarDensity: t("GridToolBar.toolbarDensity"), toolbarExport: t("GridToolBar.toolbarExport") }}
         rows={stores.userFileStore.userFiles}
         columns={columns}
         columnVisibilityModel={{

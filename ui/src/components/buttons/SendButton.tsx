@@ -2,8 +2,11 @@ import { Send } from "@mui/icons-material";
 import { Button } from "@mui/material";
 import { observer } from "mobx-react-lite";
 import { stores } from "../../stores/stores";
+import { useTranslation } from "react-i18next";
 
 const SendButton = () => {
+  const { t } = useTranslation();
+  
   return (
     <Button
       size="small"
@@ -16,7 +19,7 @@ const SendButton = () => {
         stores.userFileStore.getSelectedUserFiles().length > 0 ? false : true
       }
     >
-      Send
+      {t("SendButton.SendButtonLabel")}
     </Button>
   );
 };

@@ -22,6 +22,9 @@ import { DEFAULT_PATH } from "../../data/constants";
 import { Credentials } from "../../models/credentials";
 import { stores } from "../../stores/stores";
 import { validateEmail } from "../../utils/validators";
+import { FunctionComponent } from "react";
+import { useTranslation } from "react-i18next";
+
 
 const SignInPage = () => {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -30,7 +33,7 @@ const SignInPage = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const navigate = useNavigate();
   const location = useLocation();
-
+  const { t } = useTranslation();
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   const handleMouseDownPassword = (
@@ -47,7 +50,7 @@ const SignInPage = () => {
     if (!email || !validateEmail(email.toString()) || !password) {
       setEmailError(!email || !validateEmail(email.toString()));
       setPasswordError(!password);
-      toast.error("Invalid input.");
+      toast.error(t("pages.identity.SignInPage.ToastInvalidInput"));
     } else {
       const credentials = new Credentials(
         email.toString(),
@@ -74,7 +77,7 @@ const SignInPage = () => {
         }}
       >
         <Typography component="h1" variant="h5">
-          Sign in
+            {t("pages.identity.SignInPage.SignInTitle")} 
         </Typography>
         <Box component="form" onSubmit={handleSubmit} noValidate>
           <TextField
@@ -82,16 +85,16 @@ const SignInPage = () => {
             required
             fullWidth
             id="email"
-            label="Email address"
+            label={t("pages.identity.SignInPage.EmailLabel")}
             name="email"
             autoComplete="email"
             autoFocus
             error={emailError}
-            helperText={emailError && "Invalid email address"}
+            helperText={emailError && t("pages.identity.SignInPage.EmailError")}
             onChange={() => setEmailError(false)}
           />
           <FormControl margin="normal" fullWidth variant="outlined" required>
-            <InputLabel error={passwordError}>Password</InputLabel>
+            <InputLabel error={passwordError}>{t("pages.identity.SignInPage.PasswordLabel")}</InputLabel>
             <OutlinedInput
               id="password"
               name="password"
@@ -99,7 +102,7 @@ const SignInPage = () => {
               endAdornment={
                 <InputAdornment position="end">
                   <IconButton
-                    aria-label="toggle password visibility"
+                    aria-label={t("pages.identity.SignInPage.PasswordVisibilityLabel")}  
                     onClick={handleClickShowPassword}
                     onMouseDown={handleMouseDownPassword}
                     edge="end"
@@ -108,11 +111,11 @@ const SignInPage = () => {
                   </IconButton>
                 </InputAdornment>
               }
-              label="Password"
+              label={t("pages.identity.SignInPage.PasswordLabel")}
               onChange={() => setPasswordError(false)}
             />
             <FormHelperText error id="passwordError">
-              {passwordError && "Password cannot be empty"}
+              {passwordError && t("pages.identity.SignInPage.PasswordError")}
             </FormHelperText>
           </FormControl>
           <LoadingButton
@@ -122,7 +125,7 @@ const SignInPage = () => {
             variant="contained"
             sx={{ mt: 2, mb: 2 }}
           >
-            Sign in
+            {t("pages.identity.SignInPage.SignInButtonLabel")}
           </LoadingButton>
           <Grid container>
             <Grid item xs={4}>
@@ -132,7 +135,7 @@ const SignInPage = () => {
                 variant="body2"
                 onClick={() => navigate("/forgotPassword")}
               >
-                Forgot password
+                {t("pages.identity.SignInPage.ForgotPasswordLabel")} 
               </Link>
             </Grid>
             <Grid item xs={4} sx={{ textAlign: "center" }}>
@@ -142,7 +145,7 @@ const SignInPage = () => {
                 variant="body2"
                 onClick={() => navigate("/resendConfirmationEmail")}
               >
-                Resend confirmation
+                {t("pages.identity.SignInPage.ResendConfirmationLabel")} 
               </Link>
             </Grid>
             <Grid item xs={4} sx={{ textAlign: "right" }}>
@@ -152,7 +155,7 @@ const SignInPage = () => {
                 variant="body2"
                 onClick={() => navigate("/signUp")}
               >
-                New to us? Sign up
+                {t("pages.identity.SignInPage.NewRegistrationLabel")} 
               </Link>
             </Grid>
           </Grid>

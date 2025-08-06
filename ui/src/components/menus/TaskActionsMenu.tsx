@@ -8,6 +8,7 @@ import {
 } from "../../data/constants";
 import { IApprovalRequestTask } from "../../models/approvalRequestTask";
 import { stores } from "../../stores/stores";
+import { useTranslation } from "react-i18next";
 
 interface ITaskActionsMenuProps {
   task: IApprovalRequestTask;
@@ -27,7 +28,8 @@ const TaskActionsMenu: React.FC<ITaskActionsMenuProps> = ({ task }) => {
     stores.commonStore.setTaskReviewDialogIsOpen(true);
     handleClose();
   };
-
+  const { t } = useTranslation();
+  
   return (
     <Box>
       <IconButton
@@ -51,7 +53,7 @@ const TaskActionsMenu: React.FC<ITaskActionsMenuProps> = ({ task }) => {
         transformOrigin={MENU_TRANSFORM_ORIGIN}
         slotProps={MENU_SLOT_PROPS}
       >
-        <MenuItem onClick={handleReview}>Review</MenuItem>
+        <MenuItem onClick={handleReview}>{t("TaskActionsMenu.ReviewLabel")}</MenuItem>
       </Menu>
     </Box>
   );

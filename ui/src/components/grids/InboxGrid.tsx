@@ -16,6 +16,7 @@ import { IUserFile } from "../../models/userFile";
 import { stores } from "../../stores/stores";
 import {
   getHumanReadableRelativeDate,
+  getHumanReadableRelativeDateIntl,
   getLocaleDateTimeString,
 } from "../../utils/helpers";
 import GridToolbarButtons from "../buttons/GridToolbarButtons";
@@ -23,10 +24,12 @@ import UncompletedTaskReviewDialog from "../dialogs/UncompletedTaskReviewDialog"
 import UserFilesList from "../lists/UserFilesList";
 import TaskActionsMenu from "../menus/TaskActionsMenu";
 import NoRowsOverlay from "../overlays/NoRowsOverlay";
+import { useTranslation } from "react-i18next";
 
 const InboxGrid = () => {
   const theme = useTheme();
-
+  const { t } = useTranslation();
+  
   useEffect(() => {
     stores.commonStore.setCurrentTab(Tab.Inbox);
     stores.approvalRequestTaskStore.clearTasks();
@@ -44,7 +47,7 @@ const InboxGrid = () => {
   const columns: GridColDef[] = [
     {
       field: "files",
-      headerName: "Files to review",
+      headerName: t("InboxGrid.FilesLabel"),
       flex: 5,
       valueGetter: (_value, row) =>
         row.approvalRequest.userFiles
@@ -61,14 +64,14 @@ const InboxGrid = () => {
     },
     {
       field: "received",
-      headerName: "Received",
+      headerName: t("InboxGrid.ReceivedLabel"),
       flex: 3,
       valueGetter: (_value, row) =>
-        getHumanReadableRelativeDate(row.approvalRequest.submittedDate),
+        getHumanReadableRelativeDateIntl(row.approvalRequest.submittedDate),
     },
     {
       field: "reviewBy",
-      headerName: "Review by",
+      headerName: t("InboxGrid.ReviewByLabel"),
       flex: 3,
       valueGetter: (_value, row) =>
         row.approvalRequest.approveByDate
@@ -77,14 +80,14 @@ const InboxGrid = () => {
     },
     {
       field: "requester",
-      headerName: "Requester",
+      headerName: t("InboxGrid.RequesterLabel"),
       flex: 5,
       valueGetter: (_value, row) =>
         (row.approvalRequest.author as string).toLowerCase(),
     },
     {
       field: "action",
-      headerName: "Action",
+      headerName: t("InboxGrid.ActionLabel"),
       headerAlign: "right",
       align: "right",
       flex: 1,
@@ -97,6 +100,7 @@ const InboxGrid = () => {
   return (
     <Box sx={{ width: "100%", overflow: "hidden" }}>
       <DataGrid
+	    localeText={{ toolbarColumns: t("GridToolBar.toolbarColumns"), toolbarFilters: t("GridToolBar.toolbarFilters"), toolbarDensity: t("GridToolBar.toolbarDensity"), toolbarExport: t("GridToolBar.toolbarExport") }}
         rows={stores.approvalRequestTaskStore.tasks}
         columns={columns}
         columnVisibilityModel={{

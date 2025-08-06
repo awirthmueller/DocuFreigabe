@@ -26,6 +26,8 @@ import {
 import { Credentials } from "../../models/credentials";
 import { stores } from "../../stores/stores";
 import { validateEmail, validatePassword } from "../../utils/validators";
+import { FunctionComponent } from "react";
+import { useTranslation } from "react-i18next";
 
 const SignUpPage = () => {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -47,7 +49,9 @@ const SignUpPage = () => {
   ) => {
     event.preventDefault();
   };
-
+  
+  const { t } = useTranslation();
+  
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -69,7 +73,7 @@ const SignUpPage = () => {
           !passwordConfirmation ||
           password.toString() !== passwordConfirmation.toString()
       );
-      toast.error("Invalid input.");
+      toast.error(t("pages.identity.SignUpPage.ToastInvalidInput"));
     } else {
       const credentials = new Credentials(
         email.toString(),
@@ -82,7 +86,7 @@ const SignUpPage = () => {
           navigate("/information", {
             state: {
               message:
-                "A confirmation link was sent to your email. Confirm your email address to continue.",
+                t("pages.identity.SignUpPage.LinkSent"),
             },
           });
         } else {
@@ -106,7 +110,7 @@ const SignUpPage = () => {
         }}
       >
         <Typography component="h1" variant="h5">
-          Sign up
+           {t("pages.identity.SignUpPage.PageTitle")} 
         </Typography>
         <Box component="form" onSubmit={handleSubmit} noValidate>
           <TextField
@@ -114,15 +118,15 @@ const SignUpPage = () => {
             required
             fullWidth
             id="email"
-            label="Email address"
+            label={t("pages.identity.SignUpPage.EmailLabel")}
             name="email"
             autoFocus
             error={emailError}
-            helperText={emailError && "Invalid email address"}
+            helperText={emailError && t("pages.identity.SignUpPage.EmailError")}
             onChange={() => setEmailError(false)}
           />
           <FormControl margin="normal" fullWidth variant="outlined" required>
-            <InputLabel error={passwordError}>Password</InputLabel>
+            <InputLabel error={passwordError}>{t("pages.identity.SignUpPage.PasswordLabel")}</InputLabel>
             <OutlinedInput
               id="password"
               name="password"
@@ -130,7 +134,7 @@ const SignUpPage = () => {
               endAdornment={
                 <InputAdornment position="end">
                   <IconButton
-                    aria-label="toggle password visibility"
+                    aria-label={t("pages.identity.SignUpPage.PasswordVisibilityLabel")}  
                     onClick={handleClickShowPassword}
                     onMouseDown={handleMouseDownPassword}
                     edge="end"
@@ -143,12 +147,12 @@ const SignUpPage = () => {
               onChange={() => setPasswordError(false)}
             />
             <FormHelperText error id="passwordError">
-              {passwordError && PASSWORD_VALIDATOR_ERROR}
+              {passwordError && t("messages.email.PasswordValidatorError")}
             </FormHelperText>
           </FormControl>
           <FormControl margin="normal" fullWidth variant="outlined" required>
             <InputLabel error={passwordConfirmationError}>
-              Password confirmation
+              {t("pages.identity.SignUpPage.PasswordConfirmationLabel")}
             </InputLabel>
             <OutlinedInput
               id="passwordConfirmation"
@@ -157,7 +161,7 @@ const SignUpPage = () => {
               endAdornment={
                 <InputAdornment position="end">
                   <IconButton
-                    aria-label="toggle password confirmation visibility"
+                    aria-label={t("pages.identity.SignUpPage.PasswordVisibilityLabel")} 
                     onClick={handleClickShowPasswordConfirmation}
                     onMouseDown={handleMouseDownPassword}
                     edge="end"
@@ -170,13 +174,13 @@ const SignUpPage = () => {
                   </IconButton>
                 </InputAdornment>
               }
-              label="Password confirmation"
+              label={t("pages.identity.SignUpPage.PasswordConfirmationLabel")}
               onChange={() => setPasswordConfirmationError(false)}
             />
             <FormHelperText error id="passwordConfirmationError">
               {!passwordError &&
                 passwordConfirmationError &&
-                "Does not match password"}
+                t("pages.identity.SignUpPage.PasswordConfirmationLabel")}
             </FormHelperText>
           </FormControl>
           <LoadingButton
@@ -186,7 +190,7 @@ const SignUpPage = () => {
             variant="contained"
             sx={{ mt: 2, mb: 2 }}
           >
-            Sign up
+            {t("pages.identity.SignUpPage.SignUpButtonLabel")}
           </LoadingButton>
           <Grid container>
             <Grid item>
@@ -196,7 +200,7 @@ const SignUpPage = () => {
                 variant="body2"
                 onClick={() => navigate("/signIn")}
               >
-                Already have an account? Sign in
+                {t("pages.identity.SignUpPage.SignInButtonLabel")}
               </Link>
             </Grid>
           </Grid>

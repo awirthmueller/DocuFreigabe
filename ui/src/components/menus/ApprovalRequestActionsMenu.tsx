@@ -8,6 +8,7 @@ import {
 } from "../../data/constants";
 import { IApprovalRequest } from "../../models/approvalRequest";
 import { stores } from "../../stores/stores";
+import { useTranslation } from "react-i18next";
 
 interface IApprovalRequestActionsMenuProps {
   approvalRequest: IApprovalRequest;
@@ -34,7 +35,8 @@ const ApprovalRequestActionsMenu: React.FC<
     stores.commonStore.setApprovalRequestDeleteDialogIsOpen(true);
     handleClose();
   };
-
+  const { t } = useTranslation();
+  
   return (
     <Box>
       <IconButton
@@ -58,8 +60,8 @@ const ApprovalRequestActionsMenu: React.FC<
         transformOrigin={MENU_TRANSFORM_ORIGIN}
         slotProps={MENU_SLOT_PROPS}
       >
-        <MenuItem onClick={handleView}>Track</MenuItem>
-        <MenuItem onClick={handleDelete}>Delete</MenuItem>
+        <MenuItem onClick={handleView}>{t("ApprovalRequestActionsMenu.TrackLabel")}</MenuItem>
+        <MenuItem onClick={handleDelete}>{t("ApprovalRequestActionsMenu.DeleteLabel")}</MenuItem>
       </Menu>
     </Box>
   );

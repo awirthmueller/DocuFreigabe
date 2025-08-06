@@ -1,0 +1,181 @@
+{
+  "pages": {
+    "identity":{
+	   "SignInPage":{
+		   "SignInTitle": "Sign In",
+		   "EmailLabel": "Email address",
+		   "PasswordLabel": "Password",
+		   "SignInButtonLabel": "Sign In",
+		   "ForgotPasswordLabel": "Forgot password",
+		   "ResendConfirmationLabel": "Resend confirmation",
+		   "NewRegistrationLabel": "New to us? Sign up",
+		   "PasswordVisibilityLabel": "toggle password visibility",
+		   "PasswordError": "Password cannot be empty",
+		   "EmailError": "Invalid email address",
+		   "ToastInvalidInput": "Invalid input."
+	   },
+	   "ForgotPasswordPage":{
+		   "PageTitle": "Forgot password",
+		   "EmailLabel": "Email address",
+		   "EmailError": "Invalid email address",
+		   "LinkSent": "A reset password link was sent to your email.",
+		   "SendLabel": "Send password reset link",
+		   "PasswordLabel": "Password",
+		   "SignInButtonLabel": "Sign In",
+		   "NewRegistrationLabel": "New to us? Sign up",
+		   "ToastInvalidInput": "Invalid input."
+	   },
+	   "ResendConfirmationEmailPage":{
+		   "PageTitle": "Email confirmation",
+		   "EmailLabel": "Email address",
+		   "EmailError": "Invalid email address",
+		   "LinkSent": "A confirmation link was sent to your email. Confirm your email address to continue.",
+		   "SendLabel": "Send email confirmation link",
+		   "SignInButtonLabel": "Sign In",
+		   "NewRegistrationLabel": "New to us? Sign up",
+		   "ToastInvalidInput": "Invalid input."
+	   },
+	   "SignUpPage":{
+		   "PageTitle": "Sign up",
+		   "EmailLabel": "Email address",
+		   "PasswordLabel": "Password",
+		   "EmailError": "Invalid email address",
+		   "LinkSent": "A confirmation link was sent to your email. Confirm your email address to continue.",
+		   "SignUpButtonLabel": "Sign Up",
+		   "SignInButtonLabel": "Already have an account? Sign in",
+		   "PasswordVisibilityLabel": "toggle password visibility",
+		   "PasswordConfirmationLabel": "Password confirmation",
+		   "PasswordRepetitionError": "Password cannot be empty",
+		   "ToastInvalidInput": "Invalid input."
+	   }		
+   }
+  },
+  "NavigationTabs":{
+	   "FilesLabel": "Files",
+	   "InboxLabel": "Inbox",
+	   "ArchiveLabel": "Archive",
+	   "SentLabel": "Sent"
+   },   
+  "UserFileActionsMenu":{
+	   "DeleteLabel": "Delete"
+   },
+  "TaskActionsMenu":{
+	   "ReviewLabel": "Review"
+   },
+  "ApprovalRequestActionsMenu":{
+	   "TrackLabel": "Track",
+	   "DeleteLabel": "Delete"	   
+   },
+  "SentGrid":{
+	   "SentFilesLabel": "Sent files",
+	   "StatusLabel": "Status",
+	   "SubmittedDateLabel": "Sent",
+	   "ApproveByDateLabel": "Review by",
+	   "ApproversLabel": "Approvers",	   
+	   "ActionLabel": "Action"
+   },
+  "InboxGrid":{
+	   "FilesLabel": "Files to review",
+	   "ReceivedLabel": "Received",
+	   "ReviewByLabel": "Review by",
+	   "RequesterLabel": "Requester",   
+	   "ActionLabel": "Action"
+   },
+  "FilesGrid":{
+	   "FileNameLabel": "File name",
+	   "UploadedLabel": "Uploaded",
+	   "TypeLabel": "Type",
+	   "SizeLabel": "Size",   
+	   "ActionLabel": "Action"
+   }, 
+  "ArchiveGrid":{
+	   "ReviewedFilesLabel": "Reviewed files",
+	   "StatusLabel": "Status",
+	   "ReceivedLabel": "Received",
+	   "ReviewedLabel": "Reviewed",
+	   "RequesterLabel": "Requester",   
+	   "ActionLabel": "Action"
+   },
+  "UserSettingsDrawer":{
+	   "HomeLabel": "Home",
+	   "HelpLabel": "Help",   
+	   "LogoutLabel": "Sign out"
+   },
+  "UserFileDeleteDialog":{
+	   "DialogContentText": "Are you sure you want to delete the following file together with all related approval requests? This cannot be undone.",
+	   "CancelButtonLabel": "Cancel",
+	   "DeleteButtonLabel": "Delete"
+   },
+  "UncompleteTaskReviewDialog":{
+	   "DialogTitle": "Review the file(s)",
+	   "OnTextLabel": "on",
+	   "RequestTextLabel": "requested you to review the following file(s):",
+	   "ByTextLabel": "by",
+	   "CommentTextLabel": "Comment",
+	   "ApproveButtonLabel": "Approve",
+	   "RejectButtonLabel": "Reject",
+	   "CancelButtonLabel": "Cancel",
+	   "SubmitButtonLabel": "Submit"
+   },   
+  "CompleteTaskReviewDialog":{
+	   "DialogTitle": "Reviewed file(s)",
+	   "OnTextLabel": "on",
+	   "RequestTextLabel": "requested you to review the following file(s):",
+	   "ByTextLabel": "by",
+	   "OnTextLabel2": "On",
+	   "YouTextLabel": "you",
+	   "ApproveButtonLabel": "Approve",
+	   "RejectButtonLabel": "Reject",
+	   "CancelButtonLabel": "Cancel"
+   },
+  "ApprovalRequestViewDialog":{
+	   "DialogTitle": "Track approval reques",
+	   "OnTextLabel": "On",
+	   "RequestTextLabel": "you requested to review the following file(s):",
+	   "ByTextLabel": "by",
+	   "FromTextLabel": "from the following contact(s):",
+	   "CloseButtonLabel": "Close"
+   },
+   "ApprovalRequestSubmitDialog":{
+	   "DialogTitle": "Send file(s)",
+	   "RequestTextLabel": "You are about to send the following file(s) for review:",
+	   "EmailButtonLabel": "Email (press Enter to add multiple)",
+	   "ReviewByButtonLabel": "Review by",
+       "CommentTextLabel":  "Comment",	 
+	   "CancelButtonLabel": "Cancel",	   
+	   "SubmitButtonLabel": "Submit"
+   },
+  "ApprovalRequestDeleteDialog":{
+	   "DialogTitle": "Delete approval request",
+	   "OnTextLabel": "On",
+	   "RequestTextLabel": "you requested to review the following file(s):",
+	   "ByTextLabel": "by",
+	   "FromTextLabel": "durch die folgenden Kontakte:",
+	   "CancelButtonLabel": "Cancel",	
+	   "DeleteButtonLabel": "Delete"
+   },
+  "UploadButton":{
+		   "UploadButtonLabel": "Upload"
+	   },
+  "SendButton":{
+		   "SendButtonLabel": "Send"
+	   },
+  "GridToolBar":{
+		   "toolbarColumns": "Columns",
+		   "toolbarFilters": "Filters",
+		   "toolbarDensity": "Density",
+		   "toolbarExport": "Export"
+	   },	   
+  "MainAppBar":{
+		   "SignInButtonLabel": "Sign In",
+		   "LanguageLabel": "Language"
+	   },
+  "messages":{
+		"email":{
+			"PasswordValidatorError": "Password must be min 8 chars, have at least one lower case letter, one uppercase letter, one digit, and one symbol"
+		},
+		"login":{
+			"WrongCredentials": "(Incorrect credentials or email is not confirmed)"
+		}
+   }
+}

@@ -8,6 +8,7 @@ import {
 } from "../../data/constants";
 import { IUserFile } from "../../models/userFile";
 import { stores } from "../../stores/stores";
+import { useTranslation } from "react-i18next";
 
 interface IUserFileActionsMenuProps {
   userFile: IUserFile;
@@ -29,7 +30,8 @@ const UserFileActionsMenu: React.FC<IUserFileActionsMenuProps> = ({
     stores.commonStore.setUserFileDeleteDialogIsOpen(true);
     handleClose();
   };
-
+  const { t } = useTranslation();
+  
   return (
     <Box>
       <IconButton
@@ -53,7 +55,7 @@ const UserFileActionsMenu: React.FC<IUserFileActionsMenuProps> = ({
         transformOrigin={MENU_TRANSFORM_ORIGIN}
         slotProps={MENU_SLOT_PROPS}
       >
-        <MenuItem onClick={handleDelete}>Delete</MenuItem>
+        <MenuItem onClick={handleDelete}>{t("UserFileActionsMenu.DeleteLabel")}</MenuItem>
       </Menu>
     </Box>
   );

@@ -1,0 +1,181 @@
+{
+  "pages": {
+    "identity":{
+	   "SignInPage":{
+		   "SignInTitle": "Anmeldung",
+		   "EmailLabel": "Email Adresse",
+		   "PasswordLabel": "Passwort",
+		   "SignInButtonLabel": "Anmelden",
+		   "ForgotPasswordLabel": "Passwort vergessen",
+		   "ResendConfirmationLabel": "Bestätigung erneut senden",
+		   "PasswordVisibilityLabel": "Ändere Passwortsichtbarkeit",
+		   "NewRegistrationLabel": "Neu Registrieren",
+		   "PasswordError": "Passwort darf nicht leer sein",
+		   "EmailError": "Ungültige Email Adresse",
+		   "ToastInvalidInput": "Ungültige Eingabe."
+	   },
+	   "ForgotPasswordPage":{
+		   "PageTitle": "Password vergessen",
+		   "EmailLabel": "Email Adresse",
+		   "EmailError": "Ungültige Email Adresse",
+		   "LinkSent": "Eine Email mit einem Passwort Reset Link wurde an sie verschickt.",
+		   "SendLabel": "Link zum Zurücksetzen senden",		   
+		   "SignInButtonLabel": "Anmelden",
+		   "NewRegistrationLabel": "Neu Registrieren",
+		   "ToastInvalidInput": "Ungültige Eingabe."
+	   },
+	   "ResendConfirmationEmailPage":{
+		   "PageTitle": "Email Bestätigung",
+		   "EmailLabel": "Email Adresse",
+		   "EmailError": "Ungültige Email Adresse",
+		   "LinkSent": "Ein Bestätigungslink wurde an deine E-Mail-Adresse gesendet. Bitte bestätige deine E-Mail-Adresse, um fortzufahren.",
+		   "SendLabel": "Bestätigungslink senden",
+		   "SignInButtonLabel": "Anmelden",
+		   "NewRegistrationLabel": "Neu Registrieren",
+		   "ToastInvalidInput": "Ungültige Eingabe."
+	   },
+	   "SignUpPage":{
+		   "PageTitle": "Registrierung",
+		   "EmailLabel": "Email Adresse",
+		   "PasswordLabel": "Passwort",
+		   "EmailError": "Ungültige Email Adresse",
+		   "LinkSent": "Ein Bestätigungslink wurde an deine E-Mail-Adresse gesendet. Bitte bestätige deine E-Mail-Adresse, um fortzufahren.",
+		   "SignUpButtonLabel": "Registrieren",
+		   "SignInButtonLabel": "Sie haben schon einen Account? Anmelden",
+		   "PasswordVisibilityLabel": "Ändere Passwortsichtbarkeit",
+		   "PasswordConfirmationLabel": "Passwort Wiederholung",
+		   "PasswordRepetitionError": "Password darf nicht leer sein",
+		   "ToastInvalidInput": "Ungültige Eingabe."
+	   }		
+   }
+  },
+  "NavigationTabs":{
+	   "FilesLabel": "Dokumente",
+	   "InboxLabel": "Posteingang",
+	   "ArchiveLabel": "Archiv",
+	   "SentLabel": "Gesendet"
+   },
+  "UserFileActionsMenu":{
+	   "DeleteLabel": "Löschen"
+   },   
+  "TaskActionsMenu":{
+	   "ReviewLabel": "Prüfen"
+   }, 
+  "ApprovalRequestActionsMenu":{
+	   "TrackLabel": "Verfolgen",
+	   "DeleteLabel": "Löschen"	   
+   }, 
+  "SentGrid":{
+	   "SentFilesLabel": "Gesendetes Dokument",
+	   "StatusLabel": "Status",
+	   "SubmittedDateLabel": "Gesendet",
+	   "ApproveByDateLabel": "Prüfung bis",
+	   "ApproversLabel": "Prüfer",	   
+	   "ActionLabel": "Aktionen"
+   },
+  "InboxGrid":{
+	   "FilesLabel": "Dokument zur Prüfung",
+	   "ReceivedLabel": "Erhalten",
+	   "ReviewByLabel": "Prüfung bis",
+	   "RequesterLabel": "Anforderer",   
+	   "ActionLabel": "Aktionen"
+   },
+  "FilesGrid":{
+	   "FileNameLabel": "Dokument",
+	   "UploadedLabel": "Hochgeladen",
+	   "TypeLabel": "Typ",
+	   "SizeLabel": "Dateigröße",   
+	   "ActionLabel": "Aktionen"
+   },
+  "ArchiveGrid":{
+	   "ReviewedFilesLabel": "Geprüfte Dokumente",
+	   "StatusLabel": "Status",
+	   "ReceivedLabel": "Erhalten",
+	   "ReviewedLabel": "Prüfzeitpunkt",
+	   "RequesterLabel": "Anforderer",   
+	   "ActionLabel": "Aktionen"
+   },
+  "UserSettingsDrawer":{
+	   "HomeLabel": "Home",
+	   "HelpLabel": "Hilfe",   
+	   "LogoutLabel": "Abmelden"
+   },
+  "UserFileDeleteDialog":{
+	   "DialogContentText": "Sind sie sicher, dass sie die folgende Datei zusammen mit allen zugehörigen Genehmigungsanfragen löschen möchten? Dieser Vorgang kann nicht rückgängig gemacht werden.",
+	   "CancelButtonLabel": "Abbrechen",
+	   "DeleteButtonLabel": "Löschen"
+   },
+  "UncompleteTaskReviewDialog":{
+	   "DialogTitle": "Prüfen sie folgende Dokumente",
+	   "OnTextLabel": "bat sie am",
+	   "RequestTextLabel": "folgende Dokumente zu prüfen:",
+	   "ByTextLabel": "Spätester Prüftermin:",
+	   "CommentTextLabel": "Kommentar",
+	   "ApproveButtonLabel": "Genehmigen",
+	   "RejectButtonLabel": "Ablehnen",
+	   "FormHelperTextLabel": "Sie sollten entweder genehmigen oder ablehnen.",
+	   "CancelButtonLabel": "Abbrechen",
+	   "SubmitButtonLabel": "Senden"
+   },
+  "CompleteTaskReviewDialog":{
+	   "DialogTitle": "Geprüfte Dokumente",
+	   "OnTextLabel": "bat sie am",
+	   "RequestTextLabel": "folgende(s) Dokument(e) zu prüfen:",
+	   "ByTextLabel": "Spätester Prüftermin:",
+	   "OnTextLabel2": "Am",
+	   "YouTextLabel": "entschieden sie",
+	   "ApproveButtonLabel": "Genehmigt",
+	   "RejectButtonLabel": "Abgelehnt",
+	   "CancelButtonLabel": "Abbrechen"
+   },
+  "ApprovalRequestViewDialog":{
+	   "DialogTitle": "Verfolge Dokumentfreigaben",
+	   "OnTextLabel": "Am",
+	   "RequestTextLabel": "baten sie um die Prüfung folgender Dokumente:",
+	   "ByTextLabel": "bis zum",
+	   "FromTextLabel": "durch die folgenden Kontakte:",
+	   "CloseButtonLabel": "Schließen"
+   },
+   "ApprovalRequestSubmitDialog":{
+	   "DialogTitle": "Verschicke Dokumente",
+	   "RequestTextLabel": "Sie verschicken folgende Dokumente:",
+	   "EmailButtonLabel": "Email (Return um mehrere Empfänger anzugeben)",
+	   "ReviewByButtonLabel": "Prüfung bis:",	
+       "CommentTextLabel":  "Kommentar",	   
+	   "CancelButtonLabel": "Abbrechen",
+	   "SubmitButtonLabel": "Senden"
+   },
+  "ApprovalRequestDeleteDialog":{
+	   "DialogTitle": "Löschen einer Freigabeanfrage",
+	   "OnTextLabel": "Am",
+	   "RequestTextLabel": "baten sie um die Prüfung folgender Dokumente:",
+	   "ByTextLabel": "bis zum",
+	   "FromTextLabel": "durch die folgenden Kontakte:",
+	   "CancelButtonLabel": "Abbrechen",
+	   "DeleteButtonLabel": "Löschen"
+   },
+  "UploadButton":{
+		   "UploadButtonLabel": "Hochladen"
+	   },
+  "SendButton":{
+		   "SendButtonLabel": "Abschicken"
+	   },
+  "MainAppBar":{
+		   "SignInButtonLabel": "Anmelden",
+		   "LanguageLabel": "Sprache"
+	   },
+  "GridToolBar":{
+		   "toolbarColumns": "Spalten",
+		   "toolbarFilters": "Filter",
+		   "toolbarDensity": "Ansicht",
+		   "toolbarExport": "Export"
+	   },
+  "messages":{
+		"email":{
+			"PasswordValidatorError": "Das Passwort muss mindestens 8 Zeichen lang sein und mindestens einen Kleinbuchstaben, einen Großbuchstaben, eine Ziffer und ein Sonderzeichen enthalten."
+		},
+		"login":{
+			"WrongCredentials": "(Incorrect credentials or email is not confirmed)"
+		}
+   }
+}

@@ -22,12 +22,14 @@ import { approvalRequestSubmit } from "../../lib/controllers/approvalRequest";
 import { stores } from "../../stores/stores";
 import { validateEmails } from "../../utils/validators";
 import UserFilesList from "../lists/UserFilesList";
+import { useTranslation } from "react-i18next";
 
 const ApprovalRequestSubmitDialog = () => {
   const [approvers, setApprovers] = useState<string[]>([]);
   const [approveBy, setApproveBy] = useState<Dayjs | null>(null);
   const [approversError, setApproversError] = useState(false);
-
+  const { t } = useTranslation();
+  
   const handleApproversChange = (
     _event: React.SyntheticEvent<Element, Event>,
     value: (string | never[])[]
@@ -89,10 +91,10 @@ const ApprovalRequestSubmitDialog = () => {
         },
       }}
     >
-      <DialogTitle>Send file(s)</DialogTitle>
+      <DialogTitle>{t("ApprovalRequestSubmitDialog.DialogTitle")}</DialogTitle>
       <DialogContent dividers>
         <DialogContentText>
-          You are about to send the following file(s) for review:
+          {t("ApprovalRequestSubmitDialog.RequestTextLabel")}
         </DialogContentText>
         <UserFilesList
           userFiles={stores.userFileStore.getSelectedUserFiles()}
@@ -112,7 +114,7 @@ const ApprovalRequestSubmitDialog = () => {
           renderInput={(params) => (
             <TextField
               {...params}
-              label="Email (press Enter to add multiple)"
+              label={t("ApprovalRequestSubmitDialog.EmailButtonLabel")}
               variant="standard"
               margin="normal"
               error={approversError}
@@ -134,7 +136,7 @@ const ApprovalRequestSubmitDialog = () => {
                 margin: "normal",
               },
             }}
-            label="Review by"
+            label={t("ApprovalRequestSubmitDialog.ReviewByButtonLabel")}
             value={approveBy}
             onChange={(newValue) => setApproveBy(newValue)}
           />
@@ -144,15 +146,15 @@ const ApprovalRequestSubmitDialog = () => {
           name="comment"
           margin="normal"
           fullWidth
-          label="Comment"
+          label={t("ApprovalRequestSubmitDialog.CommentTextLabel")} 
           variant="standard"
           multiline
           rows={4}
         />
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose}>Cancel</Button>
-        <Button type="submit">Submit</Button>
+        <Button onClick={handleClose}>{t("ApprovalRequestSubmitDialog.CancelButtonLabel")}</Button>
+        <Button type="submit">{t("ApprovalRequestSubmitDialog.SubmitButtonLabel")}</Button>
       </DialogActions>
     </Dialog>
   );

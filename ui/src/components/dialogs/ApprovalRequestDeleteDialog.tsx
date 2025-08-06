@@ -13,8 +13,11 @@ import { getLocaleDateTimeString } from "../../utils/helpers";
 import UserFilesList from "../lists/UserFilesList";
 import CommentPaper from "../papers/CommentPaper";
 import ApprovalSteps from "../steps/ApprovalSteps";
+import { useTranslation } from "react-i18next";
 
 const ApprovalRequestDeleteDialog = () => {
+  const { t } = useTranslation();
+  
   const handleClose = () => {
     stores.commonStore.setApprovalRequestDeleteDialogIsOpen(false);
   };
@@ -38,14 +41,14 @@ const ApprovalRequestDeleteDialog = () => {
         },
       }}
     >
-      <DialogTitle>Delete approval request</DialogTitle>
+      <DialogTitle>{t("ApprovalRequestDeleteDialog.DialogTitle")}</DialogTitle>
       <DialogContent dividers>
         <DialogContentText>
-          On{" "}
+          {t("ApprovalRequestDeleteDialog.OnTextLabel")}{" "}
           {getLocaleDateTimeString(
             stores.approvalRequestStore.currentApprovalRequest?.submittedDate
           )}{" "}
-          you requested to review the following file(s):
+          {t("ApprovalRequestDeleteDialog.RequestTextLabel")}
         </DialogContentText>
         <UserFilesList
           userFiles={
@@ -56,7 +59,7 @@ const ApprovalRequestDeleteDialog = () => {
         />
         {stores.approvalRequestStore.currentApprovalRequest?.approveBy && (
           <DialogContentText>
-            by{" "}
+            {t("ApprovalRequestDeleteDialog.ByTextLabel")}{" "}
             {getLocaleDateTimeString(
               stores.approvalRequestStore.currentApprovalRequest?.approveByDate
             )}
@@ -66,7 +69,7 @@ const ApprovalRequestDeleteDialog = () => {
           text={stores.approvalRequestStore.currentApprovalRequest?.comment}
           sx={{ my: 1 }}
         />
-        <DialogContentText>from the following contact(s):</DialogContentText>
+        <DialogContentText>{t("ApprovalRequestDeleteDialog.FromTextLabel")}</DialogContentText>
         {stores.approvalRequestStore.currentApprovalRequest && (
           <ApprovalSteps
             approvalRequest={stores.approvalRequestStore.currentApprovalRequest}
@@ -75,9 +78,9 @@ const ApprovalRequestDeleteDialog = () => {
         )}
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose}>Cancel</Button>
+        <Button onClick={handleClose}>{t("ApprovalRequestDeleteDialog.CancelButtonLabel")}</Button>
         <Button type="submit" color="error">
-          Delete
+          {t("ApprovalRequestDeleteDialog.DeleteButtonLabel")}
         </Button>
       </DialogActions>
     </Dialog>

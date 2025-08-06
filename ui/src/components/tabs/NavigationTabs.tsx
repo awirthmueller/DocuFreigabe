@@ -4,10 +4,13 @@ import { SyntheticEvent, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Tab } from "../../models/tab";
 import { stores } from "../../stores/stores";
+import { useTranslation } from "react-i18next";
+
 
 const NavigationTabs = () => {
   const navigate = useNavigate();
-
+  const { t } = useTranslation();
+  
   useEffect(() => {
     stores.approvalRequestTaskStore.loadNumberOfUncompletedTasks();
   }, []);
@@ -35,7 +38,7 @@ const NavigationTabs = () => {
   return (
     <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
       <Tabs value={stores.commonStore.currentTab} onChange={handleTabChange}>
-        <MuiTab label="Files" />
+        <MuiTab label={t("NavigationTabs.FilesLabel")} />
         <MuiTab
           label={
             <Badge
@@ -44,12 +47,12 @@ const NavigationTabs = () => {
               }
               color="error"
             >
-              Inbox
+              {t("NavigationTabs.InboxLabel")}
             </Badge>
           }
         />
-        <MuiTab label="Archive" />
-        <MuiTab label="Sent" />
+        <MuiTab label={t("NavigationTabs.ArchiveLabel")} />
+        <MuiTab label={t("NavigationTabs.SentLabel")} />
       </Tabs>
     </Box>
   );

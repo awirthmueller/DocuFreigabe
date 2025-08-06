@@ -17,6 +17,7 @@ import { IUserFile } from "../../models/userFile";
 import { stores } from "../../stores/stores";
 import {
   getHumanReadableRelativeDate,
+  getHumanReadableRelativeDateIntl,
   getLocaleDateTimeString,
 } from "../../utils/helpers";
 import GridToolbarButtons from "../buttons/GridToolbarButtons";
@@ -27,10 +28,12 @@ import ApproversList from "../lists/ApproversList";
 import UserFilesList from "../lists/UserFilesList";
 import ApprovalRequestActionsMenu from "../menus/ApprovalRequestActionsMenu";
 import NoRowsOverlay from "../overlays/NoRowsOverlay";
+import { useTranslation } from "react-i18next";
 
 const SentGrid = () => {
   const theme = useTheme();
-
+  const { t } = useTranslation();
+  
   useEffect(() => {
     stores.commonStore.setCurrentTab(Tab.Sent);
     stores.approvalRequestStore.clearApprovalRequests();
@@ -48,7 +51,7 @@ const SentGrid = () => {
   const columns: GridColDef[] = [
     {
       field: "files",
-      headerName: "Sent files",
+      headerName: t("SentGrid.SentFilesLabel"),
       flex: 5,
       valueGetter: (_value, row) =>
         row.userFiles.map((userFile: IUserFile) => userFile.name).join(", "),
@@ -60,7 +63,7 @@ const SentGrid = () => {
     },
     {
       field: "status",
-      headerName: "Status",
+      headerName: t("SentGrid.StatusLabel"),
       flex: 1,
       renderCell: (params) => {
         return <StatusIcon status={params.row.status} />;
@@ -69,20 +72,20 @@ const SentGrid = () => {
     },
     {
       field: "submittedDate",
-      headerName: "Sent",
+      headerName: t("SentGrid.SubmittedDateLabel"),
       flex: 3,
-      valueFormatter: (value) => getHumanReadableRelativeDate(value),
+      valueFormatter: (value) => getHumanReadableRelativeDateIntl(value),
     },
     {
       field: "approveByDate",
-      headerName: "Review by",
+      headerName: t("SentGrid.ApproveByDateLabel"),
       flex: 3,
       valueFormatter: (value) =>
         value && getLocaleDateTimeString(value as Date),
     },
     {
       field: "approvers",
-      headerName: "Approvers",
+      headerName: t("SentGrid.ApproversLabel"),
       flex: 5,
       valueGetter: (value: string[]) =>
         value.map((approver) => approver.toLowerCase()).join(", "),
@@ -94,7 +97,7 @@ const SentGrid = () => {
     },
     {
       field: "action",
-      headerName: "Action",
+      headerName: t("SentGrid.ActionLabel"),
       headerAlign: "right",
       align: "right",
       flex: 1,
@@ -107,6 +110,7 @@ const SentGrid = () => {
   return (
     <Box sx={{ width: "100%", overflow: "hidden" }}>
       <DataGrid
+	    localeText={{ toolbarColumns: t("GridToolBar.toolbarColumns"), toolbarFilters: t("GridToolBar.toolbarFilters"), toolbarDensity: t("GridToolBar.toolbarDensity"), toolbarExport: t("GridToolBar.toolbarExport") }}
         rows={stores.approvalRequestStore.approvalRequests}
         columns={columns}
         columnVisibilityModel={{

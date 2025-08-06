@@ -12,10 +12,14 @@ import { observer } from "mobx-react-lite";
 import { useNavigate } from "react-router-dom";
 import { DEFAULT_PATH } from "../../data/constants";
 import { stores } from "../../stores/stores";
+import { FunctionComponent } from "react";
+import { useTranslation } from "react-i18next";
+import LanguageSelector from "../selectors/LanguageSelector";
 
 const MainAppBar = () => {
   const navigate = useNavigate();
-
+  const { t } = useTranslation();
+  
   return (
     <AppBar position="static">
       <Toolbar disableGutters sx={{ pl: 2, pr: 2 }}>
@@ -45,13 +49,16 @@ const MainAppBar = () => {
             </Typography>
           </Link>
         </Box>
+		<Box sx={{ flexGrow: 1 }} />
+
+		<LanguageSelector color="inherit"/>
         {!stores.userAccountStore.currentUser ? (
           <Button
             variant="outlined"
             color="inherit"
             onClick={() => navigate("/signIn")}
           >
-            Sign in
+            {t("MainAppBar.SignInButtonLabel")}
           </Button>
         ) : (
           <IconButton
@@ -61,6 +68,7 @@ const MainAppBar = () => {
             <Menu />
           </IconButton>
         )}
+
       </Toolbar>
     </AppBar>
   );

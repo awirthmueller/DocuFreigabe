@@ -3,9 +3,12 @@ import { Button } from "@mui/material";
 import { observer } from "mobx-react-lite";
 import { ChangeEvent, useRef } from "react";
 import { stores } from "../../stores/stores";
+import { useTranslation } from "react-i18next";
 
 const UploadButton = () => {
   const hiddenFileInput = useRef<HTMLInputElement>(null);
+  const { t } = useTranslation();
+  
   const handleUploadClick = () => {
     if (hiddenFileInput.current) {
       hiddenFileInput.current.click();
@@ -29,7 +32,7 @@ const UploadButton = () => {
         startIcon={<CloudUpload />}
         onClick={handleUploadClick}
       >
-        Upload
+        {t("UploadButton.UploadButtonLabel")}
       </Button>
       <input
         type="file"

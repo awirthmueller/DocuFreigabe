@@ -13,26 +13,29 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { stores } from "../../stores/stores";
 import { validateEmail } from "../../utils/validators";
+import { FunctionComponent } from "react";
+import { useTranslation } from "react-i18next";
 
 const ForgotPasswordPage = () => {
   const [emailError, setEmailError] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const navigate = useNavigate();
-
+  const { t } = useTranslation();
+  
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const email = data.get("email");
     if (!email || !validateEmail(email.toString())) {
       setEmailError(!email || !validateEmail(email.toString()));
-      toast.error("Invalid input.");
+      toast.error(t("pages.identity.ForgotPasswordPage.ToastInvalidInput"));
     } else {
       setIsLoading(true);
       if (
         await stores.userAccountStore.sendResetPasswordLink(email.toString())
       ) {
         navigate("/information", {
-          state: { message: "A reset password link was sent to your email." },
+          state: { message: t("pages.identity.ForgotPasswordPage.LinkSent")  },
         });
       }
       setIsLoading(false);
@@ -50,7 +53,7 @@ const ForgotPasswordPage = () => {
         }}
       >
         <Typography component="h1" variant="h5">
-          Forgot password
+           {t("pages.identity.ForgotPasswordPage.PageTitle")} 
         </Typography>
         <Box component="form" onSubmit={handleSubmit} noValidate>
           <TextField
@@ -58,12 +61,12 @@ const ForgotPasswordPage = () => {
             required
             fullWidth
             id="email"
-            label="Email address"
+            label={t("pages.identity.ForgotPasswordPage.EmailLabel")}
             name="email"
             autoComplete="email"
             autoFocus
             error={emailError}
-            helperText={emailError && "Invalid email address"}
+            helperText={emailError && t("pages.identity.ForgotPasswordPage.EmailError")}
             onChange={() => setEmailError(false)}
           />
           <LoadingButton
@@ -73,7 +76,7 @@ const ForgotPasswordPage = () => {
             variant="contained"
             sx={{ mt: 2, mb: 2 }}
           >
-            Send password reset link
+		     {t("pages.identity.ForgotPasswordPage.SendLabel")}
           </LoadingButton>
           <Grid container>
             <Grid item xs>
@@ -83,7 +86,7 @@ const ForgotPasswordPage = () => {
                 variant="body2"
                 onClick={() => navigate("/signIn")}
               >
-                Sign in
+                 {t("pages.identity.ForgotPasswordPage.SignInButtonLabel")}
               </Link>
             </Grid>
             <Grid item>
@@ -93,7 +96,7 @@ const ForgotPasswordPage = () => {
                 variant="body2"
                 onClick={() => navigate("/signUp")}
               >
-                New to us? Sign up
+                {t("pages.identity.ForgotPasswordPage.NewRegistrationLabel")}
               </Link>
             </Grid>
           </Grid>

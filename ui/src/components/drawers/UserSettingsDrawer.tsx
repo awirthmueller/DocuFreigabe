@@ -13,10 +13,12 @@ import { observer } from "mobx-react-lite";
 import { useNavigate } from "react-router-dom";
 import { DEFAULT_PATH, UI_BASE_URI } from "../../data/constants";
 import { stores } from "../../stores/stores";
+import { useTranslation } from "react-i18next";
 
 const UserSettingsDrawer = () => {
   const navigate = useNavigate();
-
+  const { t } = useTranslation();
+  
   const listItemIconSx = { minWidth: 35 };
 
   return (
@@ -44,7 +46,7 @@ const UserSettingsDrawer = () => {
               <ListItemIcon sx={listItemIconSx}>
                 <Home />
               </ListItemIcon>
-              <ListItemText primary="Home" />
+              <ListItemText primary={t("UserSettingsDrawer.HomeLabel")} />
             </ListItemButton>
           </ListItem>
           <ListItem key="help" disablePadding>
@@ -52,7 +54,7 @@ const UserSettingsDrawer = () => {
               <ListItemIcon sx={listItemIconSx}>
                 <HelpOutline />
               </ListItemIcon>
-              <ListItemText primary="Help" />
+              <ListItemText primary={t("UserSettingsDrawer.HelpLabel")} />
             </ListItemButton>
           </ListItem>
         </List>
@@ -68,7 +70,7 @@ const UserSettingsDrawer = () => {
               <ListItemIcon sx={listItemIconSx}>
                 <Logout />
               </ListItemIcon>
-              <ListItemText primary="Sign out" />
+              <ListItemText primary={t("UserSettingsDrawer.LogoutLabel")}/>
             </ListItemButton>
           </ListItem>
         </List>

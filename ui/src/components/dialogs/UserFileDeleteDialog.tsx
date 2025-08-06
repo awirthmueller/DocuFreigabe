@@ -10,8 +10,10 @@ import { observer } from "mobx-react-lite";
 import { fileDelete } from "../../lib/controllers/userFile";
 import { stores } from "../../stores/stores";
 import UserFilesList from "../lists/UserFilesList";
+import { useTranslation } from "react-i18next";
 
 const UserFileDeleteDialog = () => {
+  const { t } = useTranslation();
   const handleClose = () => {
     stores.commonStore.setUserFileDeleteDialogIsOpen(false);
   };
@@ -36,8 +38,7 @@ const UserFileDeleteDialog = () => {
       <DialogTitle>Delete file</DialogTitle>
       <DialogContent dividers>
         <DialogContentText>
-          Are you sure you want to delete the following file together with all
-          related approval requests? This cannot be undone.
+			{t("UserFileDeleteDialog.DialogContentText")}
         </DialogContentText>
         {stores.userFileStore.currentUserFile && (
           <UserFilesList
@@ -48,9 +49,9 @@ const UserFileDeleteDialog = () => {
         )}
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose}>Cancel</Button>
+        <Button onClick={handleClose}>{t("UserFileDeleteDialog.CancelButtonLabel")}</Button>
         <Button type="submit" color="error">
-          Delete
+          {t("UserFileDeleteDialog.DeleteButtonLabel")}
         </Button>
       </DialogActions>
     </Dialog>

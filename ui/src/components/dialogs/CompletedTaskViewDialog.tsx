@@ -17,10 +17,12 @@ import { stores } from "../../stores/stores";
 import { getLocaleDateTimeString } from "../../utils/helpers";
 import UserFilesList from "../lists/UserFilesList";
 import CommentPaper from "../papers/CommentPaper";
+import { useTranslation } from "react-i18next";
 
 const CompletedTaskViewDialog = () => {
   const [decisionError, setDecisionError] = useState(false);
-
+  const { t } = useTranslation();
+  
   const cleanUp = () => {
     setDecisionError(false);
   };
@@ -36,16 +38,16 @@ const CompletedTaskViewDialog = () => {
       onClose={handleClose}
       fullWidth
     >
-      <DialogTitle>Reviewed file(s)</DialogTitle>
+      <DialogTitle>{t("CompleteTaskReviewDialog.DialogTitle")}</DialogTitle>
       <DialogContent dividers>
         <DialogContentText>
           {stores.approvalRequestTaskStore.currentTask?.approvalRequest.author.toLowerCase()}{" "}
-          on{" "}
+          {t("CompleteTaskReviewDialog.OnTextLabel")}{" "}
           {getLocaleDateTimeString(
             stores.approvalRequestTaskStore.currentTask?.approvalRequest
               .submittedDate
           )}{" "}
-          requested you to review the following file(s):
+          {t("CompleteTaskReviewDialog.RequestTextLabel")}
         </DialogContentText>
 
         <UserFilesList
@@ -59,7 +61,7 @@ const CompletedTaskViewDialog = () => {
         {stores.approvalRequestTaskStore.currentTask?.approvalRequest
           .approveBy && (
           <DialogContentText>
-            by{" "}
+            {t("CompleteTaskReviewDialog.ByTextLabel")}{" "}
             {getLocaleDateTimeString(
               stores.approvalRequestTaskStore.currentTask?.approvalRequest
                 .approveByDate
@@ -73,11 +75,11 @@ const CompletedTaskViewDialog = () => {
           sx={{ my: 1 }}
         />
         <DialogContentText>
-          On{" "}
+          {t("CompleteTaskReviewDialog.OnTextLabel2")}{" "}
           {getLocaleDateTimeString(
             stores.approvalRequestTaskStore.currentTask?.completedDate
           )}{" "}
-          you
+          {t("CompleteTaskReviewDialog.YouTextLabel")} 
         </DialogContentText>
         <FormControl key="decision" error={decisionError}>
           <RadioGroup
@@ -93,13 +95,13 @@ const CompletedTaskViewDialog = () => {
             <FormControlLabel
               value="approved"
               control={<Radio />}
-              label="Approved"
+              label={t("CompleteTaskReviewDialog.ApproveButtonLabel")}
               disabled
             />
             <FormControlLabel
               value="rejected"
               control={<Radio />}
-              label="Rejected"
+              label={t("CompleteTaskReviewDialog.RejectButtonLabel")}
               disabled
             />
           </RadioGroup>
@@ -111,7 +113,7 @@ const CompletedTaskViewDialog = () => {
       </DialogContent>
       <DialogActions>
         <Button key="Cancel" onClick={handleClose}>
-          Cancel
+          {t("CompleteTaskReviewDialog.CancelButtonLabel")}
         </Button>
       </DialogActions>
     </Dialog>

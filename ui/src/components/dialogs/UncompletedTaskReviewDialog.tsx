@@ -21,10 +21,12 @@ import { stores } from "../../stores/stores";
 import { getLocaleDateTimeString } from "../../utils/helpers";
 import UserFilesList from "../lists/UserFilesList";
 import CommentPaper from "../papers/CommentPaper";
+import { useTranslation } from "react-i18next";
 
 const UncompletedTaskReviewDialog = () => {
   const [decisionError, setDecisionError] = useState(false);
-
+  const { t } = useTranslation();
+  
   const cleanUp = () => {
     setDecisionError(false);
   };
@@ -67,16 +69,16 @@ const UncompletedTaskReviewDialog = () => {
         },
       }}
     >
-      <DialogTitle>Review the file(s)</DialogTitle>
+      <DialogTitle>{t("UncompleteTaskReviewDialog.DialogTitle")}</DialogTitle>
       <DialogContent dividers>
         <DialogContentText>
           {stores.approvalRequestTaskStore.currentTask?.approvalRequest.author.toLowerCase()}{" "}
-          on{" "}
+          {t("UncompleteTaskReviewDialog.OnTextLabel")}{" "}
           {getLocaleDateTimeString(
             stores.approvalRequestTaskStore.currentTask?.approvalRequest
               .submittedDate
           )}{" "}
-          requested you to review the following file(s):
+          {t("UncompleteTaskReviewDialog.RequestTextLabel")}
         </DialogContentText>
         <UserFilesList
           userFiles={
@@ -89,7 +91,7 @@ const UncompletedTaskReviewDialog = () => {
         {stores.approvalRequestTaskStore.currentTask?.approvalRequest
           .approveBy && (
           <DialogContentText>
-            by{" "}
+            {t("UncompleteTaskReviewDialog.ByTextLabel")}{" "}
             {getLocaleDateTimeString(
               stores.approvalRequestTaskStore.currentTask?.approvalRequest
                 .approveByDate
@@ -111,17 +113,17 @@ const UncompletedTaskReviewDialog = () => {
             <FormControlLabel
               value="approve"
               control={<Radio />}
-              label="Approve"
+              label={t("UncompleteTaskReviewDialog.ApproveButtonLabel")}
             />
             <FormControlLabel
               value="reject"
               control={<Radio />}
-              label="Reject"
+              label={t("UncompleteTaskReviewDialog.RejectButtonLabel")}
             />
           </RadioGroup>
           {decisionError && (
             <FormHelperText sx={{ mx: 0 }}>
-              You should either approve or reject
+              {t("UncompleteTaskReviewDialog.FormHelperTextLabel")}
             </FormHelperText>
           )}
         </FormControl>
@@ -131,7 +133,7 @@ const UncompletedTaskReviewDialog = () => {
           name="comment"
           margin="normal"
           fullWidth
-          label="Comment"
+          label={t("UncompleteTaskReviewDialog.CommentTextLabel")} 
           autoFocus
           variant="standard"
           multiline
@@ -140,10 +142,10 @@ const UncompletedTaskReviewDialog = () => {
       </DialogContent>
       <DialogActions>
         <Button key="Cancel" onClick={handleClose}>
-          Cancel
+          {t("UncompleteTaskReviewDialog.CancelButtonLabel")}
         </Button>
         <Button key="Submit" type="submit">
-          Submit
+          {t("UncompleteTaskReviewDialog.SubmitButtonLabel")}
         </Button>
       </DialogActions>
     </Dialog>
